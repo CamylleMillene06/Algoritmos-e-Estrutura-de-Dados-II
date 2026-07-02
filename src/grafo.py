@@ -31,3 +31,8 @@ class Grafo:
                 destino = linha["Target"]
 
                 self.adicionar_aresta(origem, destino)
+                
+    def mostrar_informacoes(self):
+
+        print("Número de vértices:", len(self.vertices))
+        print("Número de arestas:", self.arestas)
