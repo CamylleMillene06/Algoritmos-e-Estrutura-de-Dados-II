@@ -11,3 +11,8 @@ print("\nBFS iniciando em MAT001:\n")
 
 bfs = BFS(grafo)
 bfs.buscar("MAT001")
+
+print("\nOrdem da BFS:")
+
+for disciplina in ordem:
+    print(disciplina)
