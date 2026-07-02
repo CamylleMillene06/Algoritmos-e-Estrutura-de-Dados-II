@@ -9,6 +9,7 @@ class BFS:
 
         visitados = set()
         fila = deque()
+        ordem = []
 
         fila.append(inicio)
         visitados.add(inicio)
@@ -16,8 +17,7 @@ class BFS:
         while fila:
 
             atual = fila.popleft()
-
-            print(atual)
+            ordem.append(atual)
             
             if atual in self.grafo.adj:
 
@@ -27,5 +27,7 @@ class BFS:
 
                         visitados.add(vizinho)
                         fila.append(vizinho)
+
+        return ordem 
 
                 
