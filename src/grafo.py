@@ -18,3 +18,16 @@ class Grafo:
 
         self.adj[origem].append(destino)
         self.arestas += 1
+
+    def carregar_csv(self, arquivo):
+
+        with open(arquivo, newline="", encoding="utf-8") as csvfile:
+
+            leitor = csv.DictReader(csvfile)
+
+            for linha in leitor:
+
+                origem = linha["Source"]
+                destino = linha["Target"]
+
+                self.adicionar_aresta(origem, destino)
