@@ -1,0 +1,38 @@
+Id,Label
+MAT001,Cálculo I
+MAT002,Cálculo II
+MAT003,Cálculo III
+MAT004,Cálculo IV
+MAT005,Álgebra Linear
+MAT006,EDO
+MAT007,Cálculo Numérico
+MAT008,Probabilidade e Estatística
+FIS001,Física I
+FIS002,Física II
+FIS003,Física III
+FIS004,Física IV
+FIS005,Física Experimental I
+FIS006,Física Experimental II
+QUI001,Química Geral
+QUI002,Química Orgânica
+BIO001,Biologia Celular
+BIO002,Genética
+COM001,Introdução à Computação
+COM002,Programação I
+COM003,Programação II
+COM004,Estruturas de Dados I
+COM005,Estruturas de Dados II
+COM006,Algoritmos
+COM007,Banco de Dados
+COM008,Sistemas Operacionais
+HUM001,Metodologia Científica
+HUM002,Epistemologia
+HUM003,Ética e Cidadania
+ECO001,Introdução à Economia
+ECO002,Microeconomia
+ECO003,Macroeconomia
+MAT009,Geometria Analítica
+MAT010,Análise Real
+FIS007,Mecânica Quântica
+COM009,Redes de Computadores
+COM010,Inteligência Artificial
