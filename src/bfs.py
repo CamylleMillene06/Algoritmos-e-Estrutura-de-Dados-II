@@ -10,9 +10,11 @@ class BFS:
         visitados = set()
         fila = deque()
         ordem = []
+        pai = {}
 
         fila.append(inicio)
         visitados.add(inicio)
+        pai[inicio] = None
 
         while fila:
 
@@ -23,11 +25,10 @@ class BFS:
 
                 for vizinho in self.grafo.adj[atual]:
 
-                    if vizinho not in visitados:
-
-                        visitados.add(vizinho)
+                    visitados.add(vizinho)
+                        pai[vizinho] = atual
                         fila.append(vizinho)
 
-        return ordem 
+        return ordem, pai
 
                 
