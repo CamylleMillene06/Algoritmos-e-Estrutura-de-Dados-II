@@ -1,5 +1,6 @@
 from grafo import Grafo
 from bfs import BFS
+from dfs import DFS
 
 grafo = Grafo()
 
@@ -26,3 +27,12 @@ if caminho:
     print(" -> ".join(caminho))
 else:
     print("Não existe caminho.")
+
+print("\nOrdem de visita da DFS:")
+
+dfs = DFS(grafo)
+
+ordem_dfs = dfs.buscar("MAT001")
+
+for disciplina in ordem_dfs:
+    print(disciplina)
