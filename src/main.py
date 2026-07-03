@@ -11,7 +11,7 @@ print("\nBFS iniciando em MAT001:\n")
 
 bfs = BFS(grafo)
 
-ordem = bfs.buscar("MAT001")
+ordem, pai = bfs.buscar("MAT001")
 
 print("\nOrdem da BFS:")
 
