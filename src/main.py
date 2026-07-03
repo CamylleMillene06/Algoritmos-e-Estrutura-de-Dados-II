@@ -17,3 +17,12 @@ print("\nOrdem da BFS:")
 
 for disciplina in ordem:
     print(disciplina)
+
+print("\nMenor caminho entre MAT001 e MAT004:")
+
+caminho = bfs.menor_caminho("MAT001", "MAT004")
+
+if caminho:
+    print(" -> ".join(caminho))
+else:
+    print("Não existe caminho.")
