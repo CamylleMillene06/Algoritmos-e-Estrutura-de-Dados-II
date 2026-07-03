@@ -1,5 +1,6 @@
 from collections import deque
 
+
 class BFS:
 
     def __init__(self, grafo):
@@ -20,15 +21,15 @@ class BFS:
 
             atual = fila.popleft()
             ordem.append(atual)
-            
+
             if atual in self.grafo.adj:
 
                 for vizinho in self.grafo.adj[atual]:
 
-                    visitados.add(vizinho)
+                    if vizinho not in visitados:
+
+                        visitados.add(vizinho)
                         pai[vizinho] = atual
                         fila.append(vizinho)
 
         return ordem, pai
-
-                
