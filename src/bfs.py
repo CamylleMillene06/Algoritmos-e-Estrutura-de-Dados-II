@@ -33,3 +33,21 @@ class BFS:
                         fila.append(vizinho)
 
         return ordem, pai
+
+    def menor_caminho(self, origem, destino):
+
+        _, pai = self.buscar(origem)
+
+        if destino not in pai:
+            return None
+
+        caminho = []
+        atual = destino
+
+        while atual is not None:
+            caminho.append(atual)
+            atual = pai[atual]
+
+        caminho.reverse()
+
+        return caminho
