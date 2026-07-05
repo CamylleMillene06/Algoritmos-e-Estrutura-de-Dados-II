@@ -2,6 +2,9 @@ class DFS:
 
     def __init__(self, grafo):
         self.grafo = grafo
+        self.tempo = 0
+        self.descoberta = {}
+        self.finalizacao = {}
 
     def buscar(self, inicio):
 
