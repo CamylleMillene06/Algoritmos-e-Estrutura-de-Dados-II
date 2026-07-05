@@ -31,6 +31,13 @@ class Grafo:
                 destino = linha["Target"]
 
                 self.adicionar_aresta(origem, destino)
+
+    def grau_medio(self):
+
+        if len(self.vertices) == 0:
+            return 0
+
+        return self.arestas / len(self.vertices)
                 
     def mostrar_informacoes(self):
 
