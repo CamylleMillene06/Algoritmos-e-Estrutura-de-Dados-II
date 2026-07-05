@@ -12,12 +12,12 @@ class DFS:
         self.entrada = {}
         self.saida = {}
 
-       visitados = set()
-       ordem = []
+        visitados = set()
+        ordem = []
 
-       self._dfs(inicio, visitados, ordem)
+        self._dfs(inicio, visitados, ordem)
 
-       return ordem
+        return ordem
 
     def _dfs(self, vertice, visitados, ordem):
 
