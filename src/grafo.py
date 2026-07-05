@@ -43,3 +43,4 @@ class Grafo:
 
         print("Número de vértices:", len(self.vertices))
         print("Número de arestas:", self.arestas)
+        print("Grau médio:", round(self.grau_medio(), 2))
