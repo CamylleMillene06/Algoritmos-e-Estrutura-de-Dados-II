@@ -36,3 +36,11 @@ ordem_dfs = dfs.buscar("MAT001")
 
 for disciplina in ordem_dfs:
     print(disciplina)
+
+print("\nTempos da DFS:")
+
+for vertice in ordem_dfs:
+    print(
+        f"{vertice}: entrada = {dfs.entrada[vertice]}, "
+        f"saida = {dfs.saida[vertice]}"
+    )
