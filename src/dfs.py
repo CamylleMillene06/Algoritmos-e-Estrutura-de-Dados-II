@@ -3,8 +3,8 @@ class DFS:
     def __init__(self, grafo):
         self.grafo = grafo
         self.tempo = 0
-        self.descoberta = {}
-        self.finalizacao = {}
+        self.entrada = {}
+        self.saida = {}
 
     def buscar(self, inicio):
 
@@ -18,6 +18,10 @@ class DFS:
     def _dfs(self, vertice, visitados, ordem):
 
         visitados.add(vertice)
+
+        self.tempo += 1
+        self.entrada[vertice] = self.tempo
+
         ordem.append(vertice)
 
         if vertice in self.grafo.adj:
@@ -27,3 +31,6 @@ class DFS:
                 if vizinho not in visitados:
 
                     self._dfs(vizinho, visitados, ordem)
+
+        self.tempo += 1
+        self.saida[vertice] = self.tempo
