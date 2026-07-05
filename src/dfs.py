@@ -8,12 +8,16 @@ class DFS:
 
     def buscar(self, inicio):
 
-        visitados = set()
-        ordem = []
+        self.tempo = 0
+        self.entrada = {}
+        self.saida = {}
 
-        self._dfs(inicio, visitados, ordem)
+       visitados = set()
+       ordem = []
 
-        return ordem
+       self._dfs(inicio, visitados, ordem)
+
+       return ordem
 
     def _dfs(self, vertice, visitados, ordem):
 
