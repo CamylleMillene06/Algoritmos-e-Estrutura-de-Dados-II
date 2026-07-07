@@ -53,3 +53,10 @@ resultado = componentes.encontrar_componentes()
 for i, componente in enumerate(resultado, start=1):
 
     print(f"Componente {i}: {' -> '.join(componente)}")
+
+print("\nNó de maior grau:")
+
+vertice, grau = grafo.maior_grau()
+
+print("Vértice:", vertice)
+print("Grau:", grau)
