@@ -9,3 +9,15 @@ class Componentes:
         componentes = []
 
         return componentes
+        
+    def _dfs_ordem(self, vertice, visitados, ordem):
+
+        visitados.add(vertice)
+
+        for vizinho in self.grafo.adj.get(vertice, []):
+
+            if vizinho not in visitados:
+
+                self._dfs_ordem(vizinho, visitados, ordem)
+
+        ordem.append(vertice)
