@@ -5,15 +5,15 @@ class Componentes:
 
     def encontrar_componentes(self):
 
-        visitados = set()
-        ordem = []
-        componentes = []
+        visitados = set()  # Controla os vértices já percorridos
+        ordem = []  # Armazenará a ordem de finalização da primeira DFS
+        componentes = []  # Guardará as componentes fortemente conexas
 
-        for vertice in self.grafo.vertices:
+        for vertice in self.grafo.vertices:  # Garante que todos os vértices do grafo sejam analisados, mesmo que existam partes desconectadas
 
             if vertice not in visitados:
 
-                self._dfs_ordem(vertice, visitados, ordem)
+                self._dfs_ordem(vertice, visitados, ordem)  # Executa a primeira DFS do algoritmo de Kosaraju
 
         return componentes
         
