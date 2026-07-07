@@ -15,6 +15,10 @@ class Componentes:
 
                 self._dfs_ordem(vertice, visitados, ordem)  # Executa a primeira DFS do algoritmo de Kosaraju
 
+        grafo_transposto = self.grafo.grafo_transposto()
+
+        visitados = set()
+
         return componentes
         
     def _dfs_ordem(self, vertice, visitados, ordem):
