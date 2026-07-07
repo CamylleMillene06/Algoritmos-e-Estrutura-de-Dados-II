@@ -47,3 +47,5 @@ for vertice in ordem_dfs:
 print("\nComponentes fortemente conexas:")
 
 componentes = Componentes(grafo)
+
+resultado = componentes.encontrar_componentes()
