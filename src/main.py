@@ -49,3 +49,11 @@ print("\nComponentes fortemente conexas:")
 componentes = Componentes(grafo)
 
 resultado = componentes.encontrar_componentes()
+
+for i, componente in enumerate(resultado, start=1):
+
+    print(f"Componente {i}:")
+
+    print(" -> ".join(componente))
+
+    print()
