@@ -5,8 +5,15 @@ class Componentes:
 
     def encontrar_componentes(self):
 
+        visitados = set()
         ordem = []
         componentes = []
+
+        for vertice in self.grafo.vertices:
+
+            if vertice not in visitados:
+
+                self._dfs_ordem(vertice, visitados, ordem)
 
         return componentes
         
