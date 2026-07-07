@@ -51,6 +51,25 @@ class Grafo:
 
         return transposto
 
+    def maior_grau(self):
+
+        graus = {}
+
+        for vertice in self.vertices:
+            graus[vertice] = 0
+
+        for origem in self.adj:
+
+            graus[origem] += len(self.adj[origem])
+
+            for destino in self.adj[origem]:
+
+                graus[destino] += 1
+
+        maior = max(graus, key=graus.get)
+
+        return maior, graus[maior]
+
     def mostrar_informacoes(self):
 
         print("Número de vértices:", len(self.vertices))
