@@ -38,6 +38,18 @@ class Grafo:
             return 0
 
         return self.arestas / len(self.vertices)
+
+        def grafo_transposto(self):
+
+        transposto = Grafo()
+
+        for origem in self.adj:
+
+            for destino in self.adj[origem]:
+
+                transposto.adicionar_aresta(destino, origem)
+
+        return transposto
                 
     def mostrar_informacoes(self):
 
