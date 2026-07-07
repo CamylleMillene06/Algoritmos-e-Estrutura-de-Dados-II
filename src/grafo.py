@@ -39,7 +39,7 @@ class Grafo:
 
         return self.arestas / len(self.vertices)
 
-        def grafo_transposto(self):
+    def grafo_transposto(self):
 
         transposto = Grafo()
 
@@ -50,7 +50,7 @@ class Grafo:
                 transposto.adicionar_aresta(destino, origem)
 
         return transposto
-                
+
     def mostrar_informacoes(self):
 
         print("Número de vértices:", len(self.vertices))
