@@ -18,6 +18,23 @@ class Componentes:
         grafo_transposto = self.grafo.grafo_transposto()
 
         visitados = set()
+        
+        while ordem:
+
+            vertice = ordem.pop()
+
+            if vertice not in visitados:
+
+                componente = []
+
+                self._dfs_componente(
+                    grafo_transposto,
+                    vertice,
+                    visitados,
+                    componente
+                )
+
+                componentes.append(componente)
 
         return componentes
         
