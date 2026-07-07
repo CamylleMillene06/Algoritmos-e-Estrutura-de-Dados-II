@@ -43,3 +43,7 @@ for vertice in ordem_dfs:
         f"{vertice}: entrada = {dfs.entrada[vertice]}, "
         f"saida = {dfs.saida[vertice]}"
     )
+
+print("\nComponentes fortemente conexas:")
+
+componentes = Componentes(grafo)
