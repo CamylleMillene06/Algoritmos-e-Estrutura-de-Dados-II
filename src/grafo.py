@@ -39,18 +39,6 @@ class Grafo:
 
         return self.arestas / len(self.vertices)
 
-    def grafo_transposto(self):
-
-        transposto = Grafo()
-
-        for origem in self.adj:
-
-            for destino in self.adj[origem]:
-
-                transposto.adicionar_aresta(destino, origem)
-
-        return transposto
-
     def maior_grau(self):
 
         graus = {}
@@ -63,12 +51,31 @@ class Grafo:
             graus[origem] += len(self.adj[origem])
 
             for destino in self.adj[origem]:
-
                 graus[destino] += 1
 
-        maior = max(graus, key=graus.get)
+        maior_no = None
+        maior_grau = -1
 
-        return maior, graus[maior]
+        for vertice in graus:
+
+            if graus[vertice] > maior_grau:
+
+                maior_no = vertice
+                maior_grau = graus[vertice]
+
+        return maior_no, maior_grau
+
+    def grafo_transposto(self):
+
+        transposto = Grafo()
+
+        for origem in self.adj:
+
+            for destino in self.adj[origem]:
+
+                transposto.adicionar_aresta(destino, origem)
+
+        return transposto
 
     def mostrar_informacoes(self):
 
