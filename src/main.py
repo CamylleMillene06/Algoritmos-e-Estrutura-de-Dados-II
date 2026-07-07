@@ -52,8 +52,4 @@ resultado = componentes.encontrar_componentes()
 
 for i, componente in enumerate(resultado, start=1):
 
-    print(f"Componente {i}:")
-
-    print(" -> ".join(componente))
-
-    print()
+    print(f"Componente {i}: {' -> '.join(componente)}")
