@@ -1,6 +1,7 @@
 from grafo import Grafo
 from bfs import BFS
 from dfs import DFS
+from componentes import Componentes
 
 grafo = Grafo()
 
