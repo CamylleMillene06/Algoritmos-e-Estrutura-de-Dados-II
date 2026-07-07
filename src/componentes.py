@@ -28,3 +28,15 @@ class Componentes:
                 self._dfs_ordem(vizinho, visitados, ordem)
 
         ordem.append(vertice)
+
+    def _dfs_componente(self, grafo, vertice, visitados, componente):
+
+        visitados.add(vertice)
+
+        componente.append(vertice)
+
+        for vizinho in grafo.adj.get(vertice, []):
+
+            if vizinho not in visitados:
+
+                self._dfs_componente(grafo, vizinho, visitados, componente)
