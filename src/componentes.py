@@ -5,6 +5,7 @@ class Componentes:
 
     def encontrar_componentes(self):
 
+        ordem = []
         componentes = []
 
         return componentes
