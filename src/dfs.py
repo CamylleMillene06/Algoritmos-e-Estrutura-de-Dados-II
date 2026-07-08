@@ -5,16 +5,20 @@ class DFS:
         self.tempo = 0
         self.entrada = {}
         self.saida = {}
+        self.pai = {}
 
     def buscar(self, inicio):
 
         self.tempo = 0
         self.entrada = {}
         self.saida = {}
+        self.pai = {}
 
         visitados = set()
         ordem = []
-
+        
+        self.pai[inicio] = None
+        
         self._dfs(inicio, visitados, ordem)
 
         return ordem
@@ -33,6 +37,8 @@ class DFS:
             for vizinho in self.grafo.adj[vertice]:
 
                 if vizinho not in visitados:
+
+                    self.pai[vizinho] = vertice
 
                     self._dfs(vizinho, visitados, ordem)
 
