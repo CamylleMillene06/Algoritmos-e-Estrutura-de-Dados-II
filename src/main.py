@@ -60,3 +60,13 @@ vertice, grau = grafo.maior_grau()
 
 print("Vértice:", vertice)
 print("Grau:", grau)
+
+print("\nVerificação de ciclos:")
+
+if grafo.verificar_ciclo():
+
+    print("O grafo possui ciclo.")
+
+else:
+
+    print("O grafo não possui ciclos.")
