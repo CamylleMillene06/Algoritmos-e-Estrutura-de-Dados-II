@@ -82,4 +82,12 @@ if grafo.verificar_ciclo():
 else:
 
     print("O grafo não possui ciclos.")
+
+print("\nDisciplinas sem pré-requisitos:")
+
+disciplinas = grafo.disciplinas_sem_prerequisitos()
+
+for disciplina in disciplinas:
+
+    print(disciplina)
     
