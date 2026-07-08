@@ -44,6 +44,18 @@ for vertice in ordem_dfs:
         f"saida = {dfs.saida[vertice]}"
     )
 
+print("\nÁrvore da DFS:")
+
+for vertice in ordem_dfs:
+
+    if dfs.pai[vertice] is None:
+
+        print(f"{vertice}: raiz")
+
+    else:
+
+        print(f"{vertice}: pai = {dfs.pai[vertice]}")
+        
 print("\nComponentes fortemente conexas:")
 
 componentes = Componentes(grafo)
