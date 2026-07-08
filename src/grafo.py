@@ -65,6 +65,21 @@ class Grafo:
 
         return maior_no, maior_grau
 
+    def possui_ciclo(self):
+
+        visitados = set()
+        pilha = set()
+
+        for vertice in self.vertices:
+
+            if vertice not in visitados:
+
+                if self._dfs_ciclo(vertice, visitados, pilha):
+
+                    return True
+
+        return False
+
     def grafo_transposto(self):
 
         transposto = Grafo()
