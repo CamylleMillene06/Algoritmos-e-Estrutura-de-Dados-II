@@ -65,7 +65,7 @@ class Grafo:
 
         return maior_no, maior_grau
 
-    def possui_ciclo(self):
+    def verificar_ciclo(self):
 
         visitados = set()
         pilha = set()
@@ -77,6 +77,27 @@ class Grafo:
                 if self._dfs_ciclo(vertice, visitados, pilha):
 
                     return True
+
+        return False
+
+    def _dfs_ciclo(self, vertice, visitados, pilha):
+
+        visitados.add(vertice)
+        pilha.add(vertice)
+
+        for vizinho in self.adj.get(vertice, []):
+
+            if vizinho not in visitados:
+
+                if self._dfs_ciclo(vizinho, visitados, pilha):
+
+                    return True
+
+            elif vizinho in pilha:
+
+                return True
+
+        pilha.remove(vertice)
 
         return False
 
