@@ -65,6 +65,29 @@ class Grafo:
 
         return maior_no, maior_grau
 
+    def disciplinas_sem_prerequisitos(self):
+
+        grau_entrada = {}
+
+        for vertice in self.vertices:
+            grau_entrada[vertice] = 0
+
+        for origem in self.adj:
+
+            for destino in self.adj[origem]:
+
+                grau_entrada[destino] += 1
+
+        disciplinas = []
+
+        for vertice in grau_entrada:
+
+            if grau_entrada[vertice] == 0:
+
+                disciplinas.append(vertice)
+
+        return sorted(disciplinas)
+
     def verificar_ciclo(self):
 
         visitados = set()
