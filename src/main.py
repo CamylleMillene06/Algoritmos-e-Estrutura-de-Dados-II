@@ -7,7 +7,11 @@ grafo = Grafo()
 
 grafo.carregar_csv("../data/D2_prereqs-nicen.csv")
 
+print("INFORMAÇÕES DA REDE")
+
 grafo.mostrar_informacoes()
+
+print("BUSCA EM LARGURA (BFS)")
 
 bfs = BFS(grafo)
 
@@ -27,6 +31,8 @@ if caminho:
 else:
     print("Não existe caminho.")
 
+print("BUSCA EM PROFUNDIDADE (DFS)")
+
 print("\nOrdem de visita da DFS:")
 
 dfs = DFS(grafo)
@@ -44,7 +50,7 @@ for vertice in ordem_dfs:
         f"saida = {dfs.saida[vertice]}"
     )
 
-print("\nÁrvore da DFS:")
+print("\nÁrvore de busca da DFS:")
 
 for vertice in ordem_dfs:
 
@@ -55,16 +61,22 @@ for vertice in ordem_dfs:
     else:
 
         print(f"{vertice}: pai = {dfs.pai[vertice]}")
-        
-print("\nComponentes fortemente conexas:")
+
+print("\nCOMPONENTES FORTEMENTE CONEXAS")
 
 componentes = Componentes(grafo)
 
 resultado = componentes.encontrar_componentes()
 
+print("\nQuantidade de componentes:", len(resultado))
+
 for i, componente in enumerate(resultado, start=1):
 
-    print(f"Componente {i}: {' -> '.join(componente)}")
+    print(f"\nComponente {i}:")
+
+    print(" -> ".join(componente))
+
+print("ANÁLISES DA REDE")
 
 print("\nNó de maior grau:")
 
@@ -77,7 +89,7 @@ print("\nVerificação de ciclos:")
 
 if grafo.verificar_ciclo():
 
-    print("O grafo possui ciclo.")
+    print("O grafo possui ciclos.")
 
 else:
 
@@ -90,4 +102,6 @@ disciplinas = grafo.disciplinas_sem_prerequisitos()
 for disciplina in disciplinas:
 
     print(disciplina)
+
+print("\nTotal:", len(disciplinas))
     
