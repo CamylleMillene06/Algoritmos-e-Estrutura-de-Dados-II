@@ -7,11 +7,11 @@ grafo = Grafo()
 
 grafo.carregar_csv("../data/D2_prereqs-nicen.csv")
 
-print("INFORMAÇÕES DA REDE")
+print("\nINFORMAÇÕES DA REDE")
 
 grafo.mostrar_informacoes()
 
-print("BUSCA EM LARGURA (BFS)")
+print("\nBUSCA EM LARGURA (BFS)")
 
 bfs = BFS(grafo)
 
@@ -31,7 +31,7 @@ if caminho:
 else:
     print("Não existe caminho.")
 
-print("BUSCA EM PROFUNDIDADE (DFS)")
+print("\nBUSCA EM PROFUNDIDADE (DFS)")
 
 print("\nOrdem de visita da DFS:")
 
@@ -56,7 +56,7 @@ for vertice in ordem_dfs:
 
     if dfs.pai[vertice] is None:
 
-        print(f"{vertice}: raiz")
+        print(f"{vertice}: raiz da árvore")
 
     else:
 
@@ -68,7 +68,7 @@ componentes = Componentes(grafo)
 
 resultado = componentes.encontrar_componentes()
 
-print("\nQuantidade de componentes:", len(resultado))
+print(f"\nQuantidade de componentes:", len(resultado))
 
 for i, componente in enumerate(resultado, start=1):
 
@@ -76,7 +76,7 @@ for i, componente in enumerate(resultado, start=1):
 
     print(" -> ".join(componente))
 
-print("ANÁLISES DA REDE")
+print("\nANÁLISES DA REDE")
 
 print("\nNó de maior grau:")
 
