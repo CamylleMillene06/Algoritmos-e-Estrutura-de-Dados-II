@@ -1,337 +1,81 @@
 # Histórico de Commits
 
-Este documento apresenta a evolução do desenvolvimento do projeto **Exploração de Grafos em uma Rede de Pré-requisitos do NICEN**. Para cada commit são descritas as principais alterações realizadas, acompanhadas de uma explicação sobre o código implementado. 
----
-
-# 02/07/2026
-
-## Commit 1: Initial commit
-
-### Objetivo
-
-Criar o repositório do projeto e iniciar o controle de versões utilizando Git.
-
-### Alterações realizadas
-
-Neste primeiro momento ainda não havia código implementado. O commit foi utilizado apenas para criar o repositório e iniciar o projeto.
-
-### Resultado
-
-A partir deste commit todas as alterações passaram a ser registradas, permitindo acompanhar a evolução do desenvolvimento.
-
----
-
-## Commit 2: README
-
-### Objetivo
-
-Adicionar a documentação inicial do projeto.
-
-### Alterações realizadas
-
-Foi criado o arquivo `README.md`, responsável por apresentar informações gerais sobre o projeto.
-
-Inicialmente o arquivo continha apenas uma breve descrição da atividade, sendo atualizado ao longo do desenvolvimento conforme novas funcionalidades foram implementadas.
-
----
-
-## Commit 3: Criar pasta data
-
-### Objetivo
-
-Organizar os arquivos utilizados como entrada do programa.
-
-### Alterações realizadas
-
-Foi criada a pasta
-
-```text
-data/
-```
-
-Nela passaram a ser armazenados os arquivos CSV contendo a rede de pré-requisitos fornecida para o desenvolvimento do trabalho.
-
-A separação dos arquivos de entrada facilita a organização do projeto e evita misturar os dados com o código-fonte.
-
----
-
-## Commit 4: Criar pasta src
-
-### Objetivo
-
-Organizar o código-fonte do projeto.
-
-### Alterações realizadas
-
-Foi criada a pasta
-
-```text
-src/
-```
-
-Essa pasta passou a concentrar todos os módulos responsáveis pela implementação dos algoritmos.
-
-Essa organização torna o projeto mais limpo e facilita futuras modificações.
-
----
-
-## Commit 5: Adicionando dataset D2 ao projeto
-
-### Objetivo
-
-Adicionar o conjunto de dados utilizado durante todo o projeto.
-
-### Alterações realizadas
-
-Foram adicionados os arquivos
-
-```text
-D2_prereqs-nicen.csv
-D2_prereqs-nicen-nodes.csv
-```
-
-O primeiro arquivo contém todas as relações de pré-requisitos entre as disciplinas.
-
-O segundo contém todos os vértices presentes na rede.
-
-Esses arquivos seriam utilizados posteriormente para construir automaticamente o grafo.
-
----
-
-## Commit 6: Módulo grafo
-
-### Objetivo
-
-Criar o módulo responsável pela representação da rede.
-
-### Alterações realizadas
-
-Foi criado o arquivo
-
-```text
-grafo.py
-```
-
-Neste momento ainda não existia implementação.
-
-Apenas foi criado o módulo que posteriormente receberia toda a estrutura da classe `Grafo`.
-
----
-
-## Commit 7: Programa principal
-
-### Objetivo
-
-Criar o ponto de entrada da aplicação.
-
-### Alterações realizadas
-
-Foi criado o arquivo
-
-```text
-main.py
-```
-
-Esse arquivo passou a ser responsável por executar todas as funcionalidades implementadas durante o projeto.
-
----
-
-## Commit 8: Módulo BFS
-
-### Objetivo
-
-Criar o módulo destinado à Busca em Largura.
-
-### Alterações realizadas
-
-Foi criado o arquivo
-
-```text
-bfs.py
-```
-
-Nesse momento apenas a estrutura inicial foi criada. A implementação da busca seria realizada nos commits seguintes.
-
----
-
-## Commit 9: Módulo DFS
-
-### Objetivo
-
-Criar o módulo destinado à Busca em Profundidade.
-
-### Alterações realizadas
-
-Foi criado o arquivo
-
-```text
-dfs.py
-```
-
-Assim como ocorreu com a BFS, inicialmente apenas a estrutura da classe foi criada.
-
----
-
-## Commit 10: Módulo componentes
-
-### Objetivo
-
-Criar o módulo responsável pelo algoritmo de Kosaraju.
-
-### Alterações realizadas
-
-Foi criado o arquivo
-
-```text
-componentes.py
-```
-
-Esse módulo seria utilizado posteriormente para identificar as componentes fortemente conexas da rede.
-
----
-
-## Commit 11: Módulo utilitário
-
-### Objetivo
-
-Criar um espaço para possíveis funções auxiliares.
-
-### Alterações realizadas
-
-Foi criado o arquivo
-
-```text
-utils.py
-```
-
-Durante o desenvolvimento percebeu-se que todas as funções puderam ser implementadas diretamente nas classes principais. Por esse motivo o arquivo foi removido na versão final do projeto.
-
----
-
-## Commit 12: Implementando a estrutura básica da classe Grafo
-
-### Objetivo
-
-Neste commit foi iniciada a implementação da classe `Grafo`, responsável por representar a rede de pré-requisitos utilizada durante todo o projeto. Como todos os algoritmos seriam executados sobre essa estrutura, foi necessário definir uma forma eficiente de armazenar as disciplinas e as relações entre elas.
-
-### Código implementado
-
-```python
-class Grafo:
-
-    def __init__(self):
-
-        self.adj = {}
-        self.vertices = set()
-        self.arestas = 0
-```
-
-### Explicação do código
-
-A primeira etapa foi a criação da classe `Grafo`.
-
-```python
-class Grafo:
-```
-
-Essa classe passou a concentrar todas as operações relacionadas à construção e manipulação da rede. Em seguida foi implementado o método construtor.
-
-```python
-def __init__(self):
-```
-
-Esse método é executado automaticamente sempre que um novo objeto da classe é criado. Sua função é inicializar todas as estruturas necessárias para representar o grafo. A primeira estrutura criada foi a lista de adjacência.
-
-```python
-self.adj = {}
-```
-
-Foi utilizado um dicionário do Python para representar a lista de adjacência. Cada chave corresponde ao código de uma disciplina e o valor associado é uma lista contendo todas as disciplinas que podem ser alcançadas a partir dela. Essa representação foi escolhida porque a rede possui poucas conexões em relação ao número de disciplinas, tornando a lista de adjacência mais eficiente que uma matriz de adjacência tanto em memória quanto durante as buscas. Em seguida foi criado um conjunto para armazenar todos os vértices.
-
-```python
-self.vertices = set()
-```
-
-A utilização de um conjunto garante que cada disciplina seja armazenada apenas uma vez, mesmo que apareça em várias relações de pré-requisito. Além disso, conjuntos permitem consultas rápidas para verificar se determinado vértice já foi inserido. Por fim foi criado um contador de arestas.
-
-```python
-self.arestas = 0
-```
-
-Essa variável será incrementada sempre que uma nova relação de pré-requisito for adicionada ao grafo. Dessa forma, o número de arestas permanece sempre atualizado, sem necessidade de percorrer toda a estrutura para realizar essa contagem.
-
-### Resultado
-
-Ao final deste commit o projeto passou a possuir uma estrutura capaz de armazenar completamente uma rede representada por um grafo dirigido. Essa implementação serviu de base para todos os algoritmos desenvolvidos posteriormente.
-
-## Commit 13: Leitura do grafo a partir de arquivo CSV
-
-### Objetivo
-
-Após definir a estrutura do grafo, o próximo passo foi permitir que a rede fosse construída automaticamente a partir do arquivo CSV fornecido para a atividade.
-
-### Código implementado
-
-```python
-import csv
-```
-
-```python
-def carregar_csv(self, caminho):
-
-    with open(caminho, newline="", encoding="utf-8") as arquivo:
-
-        leitor = csv.DictReader(arquivo)
-
-        for linha in leitor:
-
-            origem = linha["Source"]
-            destino = linha["Target"]
-
-            self.adicionar_aresta(origem, destino)
-```
-
-### Explicação do código
-
-Inicialmente foi importado o módulo `csv`, pertencente à biblioteca padrão do Python.
-
-```python
-import csv
-```
-
-Esse módulo permite realizar a leitura de arquivos separados por vírgulas sem necessidade de bibliotecas externas. Em seguida foi criado o método responsável por carregar os dados.
-
-```python
-def carregar_csv(self, caminho):
-```
-
-O parâmetro `caminho` recebe o endereço do arquivo CSV que será utilizado para construir o grafo. Depois disso o arquivo é aberto.
-
-```python
-with open(caminho, newline="", encoding="utf-8") as arquivo:
-```
-
-A instrução `with` garante que o arquivo será fechado automaticamente ao final da leitura. Foi definida também a codificação UTF-8 para evitar problemas com caracteres especiais. Na sequência foi utilizado o `DictReader`.
-
-```python
-leitor = csv.DictReader(arquivo)
-```
-
-Diferentemente da leitura tradicional, o `DictReader` transforma cada linha do arquivo em um dicionário, permitindo acessar diretamente cada coluna pelo seu nome. Assim tornou-se possível obter os valores das colunas `Source` e `Target`.
-
-```python
-origem = linha["Source"]
-destino = linha["Target"]
-```
-
-Essas duas informações representam, respectivamente, a disciplina de origem e a disciplina de destino da relação de pré-requisito. Após obter essas informações, a aresta correspondente é adicionada ao grafo.
-
-```python
-self.adicionar_aresta(origem, destino)
-```
-
-Esse método realiza toda a atualização da estrutura interna da classe.
-
-### Resultado
-
-A partir deste commit deixou de ser necessário inserir manualmente todas as relações entre disciplinas. O programa passou a construir automaticamente toda a rede de pré-requisitos a partir dos arquivos fornecidos para a atividade.
+Este arquivo reúne o histórico de desenvolvimento do projeto **Exploração de Grafos em uma Rede de Pré-requisitos do NICEN** a partir dos commits realizados no GitHub. Durante as primeiras etapas do trabalho, os commits receberam apenas títulos, sem uma descrição das implementações. Por isso, neste documento foi adicionada uma explicação para esses commits, descrevendo o que estava sendo desenvolvido em cada etapa do trabalho com base nas alterações realizadas no código. Nos commits que já possuíam descrição no próprio GitHub, mantivemos o texto que está no Github sem alterações, preservando o registro original do desenvolvimento do projeto. O objetivo deste documento é facilitar o acompanhamento da evolução da implementação, mostrando em ordem cronológica como cada funcionalidade foi sendo adicionada até a conclusão do trabalho.
+
+| Etapa | Título do Commit | Descrição \ Alterações |
+|---|---|---|
+| **1** | 092674b - Initial commit | Nesta etapa criamos o repositório do projeto e adicionado o arquivo README.md inicial. Esse primeiro commit marca o início do desenvolvimento e estabelece a estrutura básica que será utilizada para organizar os arquivos, módulos e documentação do trabalho. |
+| **2** | 6a98192 - README | Nesta etapa adicionamos as primeiras informações ao arquivo README.md. O documento passou a conter uma descrição inicial do projeto, seus objetivos, a organização dos arquivos e informações que servirão de apoio para a documentação durante todo o desenvolvimento. |
+| **3** | ec0f2e1 — Criar pasta data | Nesta etapa criamos a pasta data, destinada ao armazenamento dos conjuntos de dados utilizados no projeto. Também foi adicionado um arquivo README.md para documentar a finalidade da pasta e facilitar a organização do repositório. |
+| **4** | e67ae16 — Criar pasta src | Nesta etapa criamos a pasta src, responsável por armazenar todo o código-fonte desenvolvido ao longo do projeto. Também foi incluído um arquivo README.md para documentar a finalidade da pasta e manter a estrutura do repositório organizada. |
+| **5** | 77bd948 — Adicionando dataset D2 ao projeto | Nesta etapa adicionamos ao projeto os arquivos D2_prereqs-nicen.csv e D2_prereqs-nicen-nodes.csv, contendo as informações da rede de pré-requisitos das disciplinas. Esses arquivos passaram a servir como base para a construção do grafo e para todas as análises realizadas posteriormente. |
+| **6** | be7bdbf — Módulo grafo | Nesta etapa criamos o arquivo grafo.py, responsável por concentrar toda a implementação da estrutura do grafo. Esse módulo receberá posteriormente os métodos para leitura do conjunto de dados, armazenamento dos vértices, das arestas e das demais operações necessárias para a análise da rede.|
+| **7** | 0eef5b8 — Programa principal | Nesta etapa criamos o arquivo main.py, que será responsável por controlar a execução do projeto. Nele serão integrados todos os módulos desenvolvidos, permitindo carregar os dados, executar os algoritmos implementados e apresentar os resultados ao usuário. |
+| **8** | 30fbafd — Módulo BFS | Nesta etapa criamos o arquivo bfs.py, destinado à implementação do algoritmo de Busca em Largura (Breadth-First Search). Inicialmente foi preparada apenas a estrutura do módulo, que será desenvolvida nas próximas etapas do projeto. |
+| **9** | ce44ff6 — Módulo DFS | Nesta etapa criamos o arquivo dfs.py, responsável pela implementação da Busca em Profundidade (Depth-First Search). Nesse momento foi preparada apenas a estrutura inicial do módulo, que será complementada ao longo do desenvolvimento. |
+| **10** | edbce90 — Módulo de componentes | Nesta etapa criamos o arquivo componentes.py, destinado à implementação do algoritmo responsável por identificar as componentes fortemente conexas do grafo. A estrutura inicial foi preparada para receber as próximas etapas da implementação.|
+| **11** | 4ae6711 — Módulo utilitário | Nesta etapa criamos o arquivo utils.py, destinado a reunir possíveis funções auxiliares que poderiam ser reutilizadas pelos demais módulos do projeto. Embora posteriormente esse arquivo tenha deixado de ser utilizado, sua criação fazia parte da organização inicial da estrutura do código. |
+| **12** | cea99c3 — Implementando a estrutura básica da classe Grafo | Nesta etapa foi implementada a estrutura inicial da classe Grafo. Foram definidos os atributos responsáveis por armazenar os vértices, a lista de adjacência e a quantidade de arestas da rede, preparando a base necessária para a implementação das demais funcionalidades do projeto.|
+| **13** | fa79ee1 — Leitura do grafo a partir de arquivo CSV | Nesta etapa foi implementada a leitura do conjunto de dados a partir do arquivo CSV contendo as relações de pré-requisitos entre as disciplinas. O método percorre todas as linhas do arquivo, interpreta as informações e adiciona cada relação ao grafo, permitindo que a estrutura seja construída automaticamente a partir dos dados fornecidos. |
+| **14** | eaf490b — Carregamento inicial do grafo | Nesta etapa o arquivo principal foi adaptado para criar uma instância da classe Grafo e realizar o carregamento automático do conjunto de dados. A partir dessa implementação, o programa passa a iniciar sua execução com a rede de disciplinas completamente carregada na memória. |
+| **15** | 3eb660c — Add method to display graph information | Nesta etapa foi implementado um método responsável por exibir informações gerais do grafo, como a quantidade de vértices, o número de arestas e outras características da estrutura construída. Essas informações auxiliam na verificação da leitura correta dos dados antes da execução dos algoritmos. |
+| **16** | 43e6b6b — Exibir informações do grafo | Nesta etapa o arquivo principal foi atualizado para utilizar o novo método de exibição das informações do grafo. Após o carregamento dos dados, o programa passou a apresentar automaticamente um resumo da rede construída, facilitando a validação das informações carregadas.|
+| **17** | 76ef130 — Estrutura inicial da classe BFS | Nesta etapa foi criada a estrutura inicial da classe responsável pela implementação da Busca em Largura (BFS). Foram definidos os métodos básicos da classe, preparando a organização necessária para o desenvolvimento do algoritmo nas etapas seguintes. |
+| **18** | 51e53b4 — Percurso da BFS | Nesta etapa foi implementada a lógica principal da Busca em Largura. O algoritmo passou a utilizar uma fila para controlar a ordem de visita dos vértices, garantindo que as disciplinas fossem exploradas por níveis, conforme o funcionamento clássico da BFS. |
+| **19** | 9e4f68e — Teste BFS |esta etapa a implementação da Busca em Largura foi integrada ao arquivo principal para realização dos primeiros testes. O objetivo foi verificar se o algoritmo percorria corretamente os vértices da rede a partir de uma disciplina inicial escolhida. |
+| **20** | 6fbbc73 — BFS retornando ordem de visita | Nesta etapa a implementação da Busca em Largura foi modificada para armazenar e retornar a sequência de vértices visitados durante a execução. Essa alteração permitiu utilizar posteriormente a ordem de visita para apresentação dos resultados e validação do funcionamento do algoritmo. |
+| **21** | 232617b — BFS utilizando lista de visita | Nesta etapa o arquivo principal foi adaptado para utilizar a lista retornada pela Busca em Largura. Os vértices passaram a ser apresentados na mesma ordem em que foram visitados pelo algoritmo, tornando a saída do programa mais informativa. |
+| **22** | 84bf890 — Correção da BFS | Nesta etapa foram realizados ajustes na utilização da Busca em Largura dentro do arquivo principal. As modificações corrigiram o comportamento observado durante os testes, garantindo que os resultados fossem exibidos corretamente ao usuário. |
+| **23** | 622b9ed — Controle dos pais na BFS | Nesta etapa foi adicionada uma estrutura responsável por registrar o vértice de origem de cada disciplina descoberta durante a Busca em Largura. Essas informações serão utilizadas posteriormente para reconstruir o menor caminho encontrado entre dois vértices da rede. |
+| **24** | 5d51004 - Adapta main para receber os dados da BFS | Nesta etapa o arquivo principal foi ajustado para receber as novas informações retornadas pela Busca em Largura, incluindo a lista de predecessores utilizada na reconstrução dos caminhos encontrados pelo algoritmo.|
+| **25** | 31cda93 — Reorganizando a estrutura do código | Nesta etapa foram realizadas melhorias na organização interna da implementação da Busca em Largura. O código foi reorganizado para facilitar sua leitura, manutenção e evolução nas próximas funcionalidades que ainda seriam adicionadas. |
+| **26** | f0d5d02 — Busca do menor caminho na BFS | Nesta etapa foi implementado o método responsável por reconstruir o menor caminho encontrado pela Busca em Largura. Utilizando o dicionário de predecessores criado durante a execução do algoritmo, tornou-se possível recuperar o percurso entre o vértice inicial e o vértice de destino. |
+| **27** | 92c1854 — Adiciona teste do menor caminho | Nesta etapa foi integrada ao arquivo principal a funcionalidade de cálculo do menor caminho. Após a execução da Busca em Largura, o programa passou a apresentar o caminho encontrado entre duas disciplinas escolhidas, permitindo validar a nova implementação. |
+| **28** | dcee79d — Estrutura inicial da classe DFS | Nesta etapa foi criada a estrutura inicial da classe responsável pela Busca em Profundidade (DFS). Foram definidos os atributos e métodos básicos necessários para o desenvolvimento do algoritmo nas próximas etapas do projeto. |
+| **29** | 69fe88b — Método principal da DFS | Nesta etapa foi implementado o método principal da Busca em Profundidade. A estrutura passou a realizar a exploração recursiva dos vértices, formando a base para as demais funcionalidades relacionadas à DFS. |
+| **30** | b5ddc46 — Ordem de visita na DFS | Nesta etapa foi adicionada uma estrutura para registrar a ordem em que os vértices são visitados durante a Busca em Profundidade. Essa informação permite acompanhar o percurso realizado pelo algoritmo e comparar seu comportamento com a Busca em Largura. |
+| **31** | e5f178e — Teste inicial da DFS | Nesta etapa a implementação da Busca em Profundidade foi integrada ao arquivo principal para realização dos primeiros testes. O objetivo foi verificar se a ordem de visita dos vértices estava sendo registrada corretamente e se o algoritmo percorria toda a rede conforme esperado. |
+| **32** | fd197b3 — Controle de tempo na DFS | Nesta etapa foi adicionada a variável de controle de tempo utilizada pela Busca em Profundidade. Esse contador permite registrar o instante em que cada vértice é descoberto e o momento em que sua exploração é finalizada, informação importante para análises posteriores da estrutura do grafo. |
+| **33** | 4c7c8e6 — Tempos da DFS | Nesta etapa foi concluída a implementação dos tempos de descoberta e finalização dos vértices durante a Busca em Profundidade. A cada visita realizada, o algoritmo passa a armazenar essas informações, permitindo acompanhar com mais detalhes a execução da DFS. |
+| **34** | d45c2d2 — Tempos da DFS no main | Nesta etapa o arquivo principal foi atualizado para apresentar os tempos de descoberta e finalização calculados pela Busca em Profundidade. Essa alteração permitiu visualizar os resultados produzidos pelo algoritmo e verificar seu funcionamento durante os testes. |
+| **35** | a5d9e61 — Correção da inicialização da DFS | Nesta etapa foram realizados ajustes na inicialização da Busca em Profundidade. As modificações garantiram que as estruturas utilizadas pelo algoritmo fossem corretamente reinicializadas antes de cada execução, evitando inconsistências durante os testes realizados. |
+| **36** | 485e09a — Cálculo do grau médio | Nesta etapa foi implementado o método responsável por calcular o grau médio do grafo. O cálculo considera a quantidade total de conexões existentes na rede em relação ao número de vértices, fornecendo uma medida que auxilia na caracterização da estrutura analisada. |
+| **37** | e1da8ba — Exibe o grau médio do grafo | Nesta etapa a funcionalidade de cálculo do grau médio foi integrada à saída do programa. Após o carregamento do grafo, o sistema passou a apresentar automaticamente esse valor, complementando as informações gerais sobre a rede de disciplinas. |
+| **38** | 69278d5 — Correção de espaçamento no código | Nesta etapa foram realizados pequenos ajustes de organização e formatação no código da Busca em Profundidade. As alterações tiveram como objetivo melhorar a legibilidade e manter um padrão de escrita durante o desenvolvimento do projeto, sem modificar o funcionamento do algoritmo. |
+| **39** | b542647 — Ajusta saída da BFS | Nesta etapa foram feitos ajustes na forma como os resultados da Busca em Largura eram apresentados ao usuário. A saída do programa foi reorganizada para tornar a visualização das informações mais clara e facilitar a interpretação dos resultados obtidos durante a execução. |
+| **40** | 9ff8140 — Implementa grafo transposto | Foi adicionado um método para criar o grafo transposto, invertendo as arestas do grafo original. Esse método será utilizado na implementação das componentes fortemente conexas. |
+| **41** | 09b2184 — Cria a classe de componentes | Adiciona a estrutura inicial da classe que será responsável por identificar as componentes fortemente conexas do grafo. |
+| **42** | fbcbd52 — Método para encontrar componentes | Nesta etapa foi criado o método principal que será responsável por identificar as componentes fortemente conexas do grafo. Inicialmente, foi definida a estrutura básica do método e criada uma lista para armazenar as componentes encontradas durante a execução do algoritmo. Embora a lógica ainda não tenha sido implementada, essa organização prepara a classe para receber as próximas etapas do algoritmo de Kosaraju, facilitando o desenvolvimento do código. |
+| **43** | 5d658eb — Estrutura do algoritmo de Kosaraju | Nesta etapa foram adicionadas as estruturas iniciais necessárias para a implementação do algoritmo de Kosaraju. Foi criada a lista "ordem", que será utilizada para armazenar a sequência de finalização dos vértices durante a primeira busca em profundidade (DFS), e mantida a lista "componentes", que armazenará as componentes fortemente conexas identificadas ao final do algoritmo. Essa organização é importante porque o algoritmo depende da ordem de finalização obtida na primeira DFS para realizar corretamente a segunda busca no grafo transposto. |
+| **44** | 26cee37 — Primeira DFS do algoritmo de Kosaraju | Nesta etapa foi implementada a primeira busca em profundidade utilizada pelo algoritmo de Kosaraju. Foi criada uma função auxiliar responsável por percorrer o grafo e registrar os vértices na ordem em que finalizam sua exploração. Diferente da DFS anterior, o objetivo dessa etapa não é armazenar a ordem de visita, mas sim a ordem de finalização, que será utilizada posteriormente para iniciar a segunda busca no grafo transposto e identificar corretamente as componentes fortemente conexas. |
+| **45** | 2b2f6ec — Corrige método do grafo transposto | Foi corrigida a posição do método responsável por criar o grafo transposto. Durante a implementação, o método havia ficado dentro de outra função, impedindo a execução correta do programa. Após o ajuste, o método passou a fazer parte da classe Grafo e poderá ser utilizado nas próximas etapas da implementação das componentes fortemente conexas. |
+| **46** | fe47e25 — Primeira etapa da busca em profundidade | Nesta etapa foi iniciada a execução da primeira fase do algoritmo de Kosaraju. O método principal passou a percorrer todos os vértices do grafo, utilizando uma busca em profundidade para registrar a ordem de finalização de cada vértice. Também foi adicionada a estrutura de controle dos vértices visitados, evitando que um mesmo vértice seja processado mais de uma vez. Essa ordem será utilizada na próxima etapa para identificar corretamente as componentes fortemente conexas no grafo transposto. |
+| **47** | 4787f16 — Comentário em uma parte do código | Comentário do que está sendo utilizado no método def encontrar_componentes(self). |
+| **48** | e04440a — DFS para identificar componentes | Nesta etapa foi implementada a segunda busca em profundidade utilizada pelo algoritmo de Kosaraju. Diferente da primeira DFS, que registra a ordem de finalização dos vértices, esta nova função tem como objetivo percorrer o grafo transposto e reunir todos os vértices pertencentes a uma mesma componente fortemente conexa. Cada componente será armazenada em uma lista própria, que posteriormente será adicionada ao resultado final do algoritmo. |
+| **49** | 4d17f63 — Segunda etapa do algoritmo de Kosaraju | Nesta etapa foi preparada a segunda fase do algoritmo de Kosaraju. Após concluir a primeira busca em profundidade, o algoritmo passa a criar o grafo transposto, que possui todas as arestas com direção invertida. Também foi reinicializado o conjunto de vértices visitados, permitindo que uma nova busca seja realizada sem considerar as marcações da primeira DFS. Essas alterações foram realizadas para que as componentes fortemente conexas possam ser identificadas corretamente nas próximas etapas. |
+| **50** | e183f25 — Segunda DFS do algoritmo de Kosaraju | Nesta etapa foi implementada a segunda fase do algoritmo de Kosaraju. Utilizando a ordem de finalização obtida na primeira busca em profundidade, o algoritmo passa a percorrer o grafo transposto para identificar as componentes fortemente conexas. A cada nova busca é criada uma lista para armazenar os vértices pertencentes à mesma componente, que posteriormente é adicionada ao conjunto de resultados. Com essa implementação, o algoritmo passa a identificar corretamente as componentes presentes no grafo. |
+| **51** | f1e6041 — Importa classe de componentes no main | Nesta etapa foi adicionada a importação da classe Componentes no arquivo principal do projeto. Essa alteração permite que o algoritmo responsável por identificar as componentes fortemente conexas seja utilizado posteriormente no main.py. |
+| **52** | 7c3d7eb — Cria objeto para componentes no main | Nesta etapa foi criado o objeto da classe Componentes no arquivo principal do projeto. Assim como já havia sido feito para as classes BFS e DFS, o novo objeto recebe o grafo carregado pelo programa e fica preparado para executar o algoritmo de identificação das componentes fortemente conexas. Nesta fase o algoritmo ainda não é executado, sendo apenas realizada a sua inicialização para as próximas etapas. |
+| **53** | b1b05d8 — Executa algoritmo de componentes | Nesta etapa foi adicionada a chamada do método responsável por identificar as componentes fortemente conexas do grafo. A partir dessa alteração, o algoritmo de Kosaraju passa a ser executado durante a execução do programa, realizando internamente todas as etapas necessárias para encontrar as componentes. Os resultados são armazenados em uma variável para que possam ser exibidos e analisados nas próximas etapas do desenvolvimento. |
+| **54** | 2f01978 — Exibe componentes fortemente conexas | Nesta etapa foi adicionada a exibição das componentes fortemente conexas identificadas pelo algoritmo de Kosaraju. Após a execução do algoritmo, o programa percorre todas as componentes encontradas e apresenta seus vértices de forma organizada, facilitando a visualização dos resultados obtidos. Com essa implementação, a funcionalidade de identificação e apresentação das componentes fortemente conexas foi concluída e integrada ao fluxo principal do trabalho. |
+| **55** | ef5df9e — Melhora formatação da saída das componentes | Foi ajustada a forma de exibição das componentes fortemente conexas para deixar a saída mais organizada e fácil de visualizar. Cada componente passou a ser apresentada em uma única linha, mantendo a leitura dos resultados mais clara. |
+| **56** | 2635ecb — Cálculo do nó de maior grau | Nessa etapa foi implementado um método para calcular o grau de todos os vértices do grafo e identificar aquele com maior número de conexões. Para grafos dirigidos, o cálculo considera tanto as arestas de entrada quanto as arestas de saída, permitindo encontrar o vértice mais conectado da rede. Esse método será utilizado posteriormente para responder às análises solicitadas no trabalho. |
+| **57** | 0a87a60 — Reorganiza a estrutura do código e implementa cálculo do maior grau do grafo | Nesta etapa foi organizado em uma melhor estrutura o código e implementado um método para calcular o grau de todos os vértices da rede. Inicialmente é criado um dicionário para armazenar o grau de cada vértice e, em seguida, são contabilizadas as arestas de entrada e de saída de cada um. Após esse cálculo, o método percorre os valores encontrados para identificar o vértice com maior grau, retornando seu identificador e a quantidade de conexões. Essa função será utilizada posteriormente para responder às perguntas solicitadas no trabalho. |
+| **58** | b769027 — Exibe nó de maior grau da rede | Nesta etapa o método de cálculo do maior grau foi integrado ao arquivo principal. Após a execução das demais análises do grafo, o programa passa a identificar automaticamente o vértice com o maior número de conexões e exibir seu grau total. Essa funcionalidade complementa a análise da rede e será utilizada para responder à questão do trabalho relacionada ao vértice mais conectado. |
+| **59** | 876a887 — Método para verificar ciclos no grafo | Nesta etapa foi implementado o método responsável por iniciar a verificação de ciclos no grafo. O algoritmo percorre todos os vértices da rede e inicia uma busca em profundidade sempre que encontra um vértice ainda não visitado, garantindo que toda a estrutura do grafo seja analisada. Caso seja identificado um ciclo durante a busca, o método retorna imediatamente o resultado da verificação, permitindo que essa informação seja utilizada posteriormente nas análises do trabalho. |
+| **60** | 569273a — DFS para verificação de ciclos | Nesta etapa foi implementada a função auxiliar utilizada na verificação de ciclos do grafo. A busca em profundidade percorre os vértices da rede registrando aqueles que já foram visitados e os que fazem parte do caminho atual da recursão. Caso um vértice seja encontrado novamente enquanto ainda estiver nesse caminho, a função identifica a existência de um ciclo e encerra a busca. Essa implementação complementa o método de verificação de ciclos adicionado anteriormente. |
+| **61** | 73ac92b — Verificando os ciclos no main | Nesta etapa foi integrada ao arquivo principal a funcionalidade de verificação de ciclos do grafo. Após a execução das demais análises, o programa passa a verificar automaticamente se existe algum ciclo na rede e apresenta o resultado ao usuário. Essa informação complementa a análise estrutural do grafo e será utilizada para responder às questões propostas no trabalho. |
+| **62** | 1522f39 — Verificando os ciclos no main | Nesta etapa foi integrada ao arquivo principal a funcionalidade de verificação de ciclos do grafo. Após a execução das demais análises, o programa passa a verificar automaticamente se existe algum ciclo na rede e apresenta o resultado ao usuário. Essa informação complementa a análise estrutural do grafo e será utilizada para responder às questões propostas no trabalho. |
+| **63** | 9dbd9c9 — Armazena o pai de cada vértice na DFS | Nesta etapa foi adicionada a estrutura responsável por armazenar o vértice de origem de cada visita realizada pela DFS. Sempre que um novo vértice é alcançado, o algoritmo registra de qual vértice ele foi descoberto. Essas informações serão utilizadas posteriormente para apresentar a árvore gerada pela busca em profundidade. |
+| **64** | 04d8268 — Apresenta árvore da busca em profundidade | Nesta etapa foi adicionada a exibição da árvore gerada pela busca em profundidade. Utilizando as informações armazenadas durante a execução da DFS, o programa passa a apresentar a relação entre cada vértice e o vértice que o descobriu. O vértice inicial é identificado como a raiz da árvore, permitindo visualizar de forma organizada o percurso realizado pelo algoritmo. |
+| **65** | 204155a — Implementa a identificação de disciplinas sem pré-requisitos | Nesta etapa foi implementado um método para identificar as disciplinas que não possuem pré-requisitos na rede. O algoritmo calcula o grau de entrada de todos os vértices e seleciona aqueles cujo valor é igual a zero, indicando que podem ser cursados sem depender da aprovação em outras disciplinas. Essa funcionalidade será utilizada para responder à questão 6 proposta no trabalho. |
+| **66** | 174c54a — Apresenta disciplinas sem pré-requisitos | Nesta etapa foi integrada ao programa principal a funcionalidade de identificação das disciplinas sem pré-requisitos. Após calcular o grau de entrada de cada vértice, o programa passa a exibir automaticamente as disciplinas que não dependem de outras para serem cursadas. Essa análise complementa as funcionalidades já implementadas e responde à questão 6 proposta no trabalho. |
+| **67** | 58cb724 — Melhora a organização da saída do programa | Nesta etapa foram realizadas melhorias na apresentação dos resultados exibidos pelo programa. Foram adicionados títulos para organizar cada etapa da execução, como as buscas em largura e profundidade, componentes fortemente conexas e análises da rede. Também foi incluída a quantidade de componentes fortemente conexas e reorganizada a exibição das informações para tornar a saída mais clara e facilitar a interpretação dos resultados, sem alterar o funcionamento dos algoritmos implementados. | 
+| **68** | 56f94a2 — Ajusta espaçamento da saída do programa | Foram adicionadas quebras de linha na saída do programa para melhorar a organização visual das informações exibidas durante a execução, tornando a leitura dos resultados mais clara. | 
+| **69** | 1a4c314 — Reorganizando a estrutura do README | Nessa etapa foi realizada a organização do README com instruções de execução e descrição da estrutura do código. |
+| **70** | c08545a — Removendo arquivo | Remove utils.py por não ser utilizado no projeto. |
+| **71** | b07c693 — Adiciona README da pasta src | Adiciona documentação da pasta src, descrevendo os arquivos responsáveis pela implementação do projeto e suas respectivas funções. | 
+| **72** | eb8e997 — Histórico de Commits | Espaço destinado para descrição do passo a passo dos códigos feitos ao longo do trabalho. | 
+| **73** | b3504b6 — Primeiro passo a passo dos Commits | Nessa etapa foi explicado os primeiros commits realizados nesse trabalho. | 
+| **74** | 5f9dcd6 — Atualizando o histórico de commits | Nessa etapa foi feita a explicação dos commits de alguns códigos realizados no trabalho. | 
+| **75** | Finaliza o documento de histórico de commits | Nessa etapa foi realizada a atualização final do histórico de commits, incluindo a descrição de todas as alterações implementadas durante o desenvolvimento do projeto. O documento passou a registrar, de forma organizada e cronológica, a evolução completa da implementação até sua conclusão. | 
