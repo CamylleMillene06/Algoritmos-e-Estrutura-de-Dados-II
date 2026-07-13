@@ -36,7 +36,7 @@ data/
 │   ├── dfs.py
 │   └── componentes.py
 │
-├── requirements.txt
+├── HISTORICO_COMMITS.md
 └── README.md
 ```
 
