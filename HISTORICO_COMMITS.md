@@ -78,4 +78,6 @@ Este arquivo reúne o histórico de desenvolvimento do projeto **Exploração de
 | **72** | eb8e997 — Histórico de Commits | Espaço destinado para descrição do passo a passo dos códigos feitos ao longo do trabalho. | 
 | **73** | b3504b6 — Primeiro passo a passo dos Commits | Nessa etapa foi explicado os primeiros commits realizados nesse trabalho. | 
 | **74** | 5f9dcd6 — Atualizando o histórico de commits | Nessa etapa foi feita a explicação dos commits de alguns códigos realizados no trabalho. | 
-| **75** | Finaliza o documento de histórico de commits | Nessa etapa foi realizada a atualização final do histórico de commits, incluindo a descrição de todas as alterações implementadas durante o desenvolvimento do projeto. O documento passou a registrar, de forma organizada e cronológica, a evolução completa da implementação até sua conclusão. | 
+| **75** | 133375c - Finaliza o documento de histórico de commits | Nessa etapa foi realizada a atualização final do histórico de commits, incluindo a descrição de todas as alterações implementadas durante o desenvolvimento do projeto. O documento passou a registrar, de forma organizada e cronológica, a evolução completa da implementação até sua conclusão. | 
+| **76** | c1c2083 - Adiciona histórico de commits ao README | Nesta etapa foi adicionada ao README ao arquivo HISTORICO_COMMITS.md, permitindo o acesso ao histórico detalhado dos commits e à documentação da evolução do projeto. | 
+| **77** | f7f25bb -  Relatório do Projeto | Arquivo em PDF do relatório do projeto da disciplina. | 
